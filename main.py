@@ -1,11 +1,9 @@
 def main():
     
     with open("books/frankenstein.txt") as f:
-        print("--- Begin report of books/frankenstein.txt ---")
         file_contents = f.read()
 
         word_count = len(file_contents.split())
-        print(f"{word_count} words found in the document")
 
         
         char_count = ({})
@@ -17,11 +15,18 @@ def main():
                     char_count [c] += 1
                 else:
                     char_count [c] = 1
-        def sort_on(char_count):
-            return char_count[nums]
+        char_count2 = [{'character': key, 'num': value} for key, value in char_count.items()]
+        def sort_on(char_count2):
+            return char_count2['num']
         
         
-        print (f"The '{key in char_count}' character was found {value in char_count} times")
+        print("--- Begin report of books/frankenstein.txt ---")
+        print(f"{word_count} words found in the document")
+        print("")
+        char_count2.sort(reverse=True, key=sort_on)
+        for char_dict in char_count2:
+
+            print(f"The '{char_dict['character']}' character was found {char_dict['num']} times")
         
 
         

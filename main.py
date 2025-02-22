@@ -1,6 +1,11 @@
 def main():
-    
-    with open("books/frankenstein.txt") as f:
+    import sys
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    path = sys.argv[1]
+    with open(path) as f:
         file_contents = f.read()
 
         word_count = len(file_contents.split())
@@ -20,7 +25,7 @@ def main():
             return char_count2['num']
         
         
-        print("--- Begin report of books/frankenstein.txt ---")
+        print(f"--- Begin report of {path} ---")
         print(f"{word_count} words found in the document")
         print("")
         char_count2.sort(reverse=True, key=sort_on)
@@ -31,5 +36,4 @@ def main():
 
         
 
-        
 main()
